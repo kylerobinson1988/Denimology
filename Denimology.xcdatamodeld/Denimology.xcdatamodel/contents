@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ClothingMeasurementCore" representedClassName="ClothingMeasurementCore" syncable="YES" codeGenerationType="class">
+        <attribute name="backRise" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="chest" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="frontRise" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="hem" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="inseam" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="knee" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="shoulders" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sleeveLength" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="topLength" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="topThigh" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="waist" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="parentItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DenimItemCore" inverseName="measurements" inverseEntity="DenimItemCore" syncable="YES"/>
+    </entity>
+    <entity name="DenimItemCore" representedClassName="DenimItemCore" syncable="YES" codeGenerationType="class">
+        <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateStarted" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="daysWorn" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sanforized" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="washes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="journal" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="EntryLogCore" inverseName="associatedDenim" inverseEntity="EntryLogCore" syncable="YES"/>
+        <relationship name="measurements" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ClothingMeasurementCore" inverseName="parentItem" inverseEntity="ClothingMeasurementCore" syncable="YES"/>
+    </entity>
+    <entity name="DenimNerdCore" representedClassName="DenimNerdCore" syncable="YES" codeGenerationType="class">
+        <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facebook" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="instagram" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reddit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twitter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueUserId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="denimItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DenimItemCore" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DenimNerdCore" inverseName="friends" inverseEntity="DenimNerdCore" syncable="YES"/>
+    </entity>
+    <entity name="EntryLogCore" representedClassName="EntryLogCore" syncable="YES" codeGenerationType="class">
+        <attribute name="entry" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="wearLevel" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="associatedDenim" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DenimItemCore" inverseName="journal" inverseEntity="DenimItemCore" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DenimItemCore" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="ClothingMeasurementCore" positionX="-54" positionY="-9" width="128" height="225"/>
+        <element name="DenimNerdCore" positionX="-36" positionY="9" width="128" height="180"/>
+        <element name="EntryLogCore" positionX="-18" positionY="27" width="128" height="105"/>
+    </elements>
+</model>
