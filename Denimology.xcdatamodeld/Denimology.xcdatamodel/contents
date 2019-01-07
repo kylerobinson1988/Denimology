@@ -18,12 +18,14 @@
         <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateStarted" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="daysWorn" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="hoursWorn" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sanforized" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="washes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="denimNerd" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DenimNerdCore" inverseName="denimItems" inverseEntity="DenimNerdCore" syncable="YES"/>
         <relationship name="journal" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="EntryLogCore" inverseName="associatedDenim" inverseEntity="EntryLogCore" syncable="YES"/>
         <relationship name="measurements" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ClothingMeasurementCore" inverseName="parentItem" inverseEntity="ClothingMeasurementCore" syncable="YES"/>
     </entity>
@@ -35,7 +37,7 @@
         <attribute name="twitter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uniqueUserId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="denimItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DenimItemCore" syncable="YES"/>
+        <relationship name="denimItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DenimItemCore" inverseName="denimNerd" inverseEntity="DenimItemCore" syncable="YES"/>
         <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DenimNerdCore" inverseName="friends" inverseEntity="DenimNerdCore" syncable="YES"/>
     </entity>
     <entity name="EntryLogCore" representedClassName="EntryLogCore" syncable="YES" codeGenerationType="class">
@@ -45,7 +47,7 @@
         <relationship name="associatedDenim" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DenimItemCore" inverseName="journal" inverseEntity="DenimItemCore" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DenimItemCore" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="DenimItemCore" positionX="-63" positionY="-18" width="128" height="30"/>
         <element name="ClothingMeasurementCore" positionX="-54" positionY="-9" width="128" height="225"/>
         <element name="DenimNerdCore" positionX="-36" positionY="9" width="128" height="180"/>
         <element name="EntryLogCore" positionX="-18" positionY="27" width="128" height="105"/>
