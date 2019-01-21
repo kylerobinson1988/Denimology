@@ -45,7 +45,7 @@ class DenimItem {
     var daysWorn: Int? {
         
         didSet {
-            hoursWorn = (daysWorn ?? 0) % 14
+            hoursWorn = (daysWorn ?? 0) * 14
         }
         
     }
